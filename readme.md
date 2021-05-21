@@ -1,12 +1,20 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
+Charity Donation
+
+A platform that allows recycling unused items to the trusted institutions 
+which would then pass them to the people that actually really need them.
 
 
-Przed przystąpieniem do pracy  przeczytaj poniższe wskazówki.
-## Jak zacząć?
+Functionalities:
+* 
 
-1. Zaimportuj projekt jako projekt `Maven`, wg poniższych wskazówek:
 
-	* W `IntelliJ` wybieramy: `File –> New –> Project from Existing Sources...`
-	* Wskazujemy lokalizację katalogu ze sklonowanym projektem i zatwierdzamy.
-	* Następnie w nowym oknie wybieramy: `Import project from external model` i wskazujemy `Maven`
-	* Wybieramy kolejno opcje: `Next –> Next –> Next –> Finish`
+
+
+
+Tecnologies used:
+* Spring Boot
+* Spring Form
+* Hibernate
+* Spring Data JPA
+* HTML
+* CSS
