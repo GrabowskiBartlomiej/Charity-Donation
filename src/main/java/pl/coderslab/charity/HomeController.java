@@ -5,25 +5,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.Entity.Institution;
+import pl.coderslab.charity.Repository.DonationRepo;
 import pl.coderslab.charity.Repository.InstitutionRepo;
+import pl.coderslab.charity.Service.HomePageServices;
 
 
 @Controller
 public class HomeController {
 
-    private InstitutionRepo institutionRepo;
+    private HomePageServices homePageServices;
 
     @Autowired
-    public HomeController(InstitutionRepo institutionRepo) {
-        this.institutionRepo = institutionRepo;
+    public HomeController(HomePageServices homePageInitialize) {
+        this.homePageServices = homePageInitialize;
     }
 
     @RequestMapping("/")
     public String homeAction(Model model) {
-        model.addAttribute("institutions", institutionRepo.findAll());
-        for(Institution institution : institutionRepo.findAll()){
-            System.out.println(institution.getName());
-        }
+        homePageServices.homePageInitialize(model);
         return "index";
     }
 }
