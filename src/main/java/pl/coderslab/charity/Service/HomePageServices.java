@@ -20,7 +20,7 @@ public class HomePageServices {
 
     public void homePageInitialize(Model model) {
         int totalBags;
-        model.addAttribute("institutions", institutionRepo.findAll());
+        getInstitutions(model);
         model.addAttribute("donations", donationRepo.findAll().size());
         try {
             totalBags = donationRepo.allBags();
@@ -31,4 +31,7 @@ public class HomePageServices {
         model.addAttribute("totalBags", totalBags);
     }
 
+    public void getInstitutions(Model model) {
+        model.addAttribute("institutions", institutionRepo.findAll());
+    }
 }
