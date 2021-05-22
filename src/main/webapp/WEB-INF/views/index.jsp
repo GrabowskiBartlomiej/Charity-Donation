@@ -89,7 +89,7 @@
             <li>
                 <c:forEach items="${institutions}" var="institution" begin="0" end="1">
                     <div class="col">
-                        <div class="title">${institution.name}</div>
+                        <div class="title">Fundacja ${institution.name}</div>
                         <div class="subtitle">${institution.description}</div>
                     </div>
                 </c:forEach>
@@ -98,7 +98,7 @@
             <li>
                 <c:forEach items="${institutions}" var="institution" begin="2" end="3">
                     <div class="col">
-                        <div class="title">${institution.name}</div>
+                        <div class="title">Fundacja ${institution.name}</div>
                         <div class="subtitle">${institution.description}</div>
                     </div>
                 </c:forEach>
