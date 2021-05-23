@@ -12,13 +12,14 @@
     <link rel="stylesheet" href="<c:url value="../../resources/css/style.css"/>" />
   </head>
   <body>
+  <header>
   <%@include file="../Fragments/header.jsp"%>
-
+  </header>
     <section class="login-page">
       <h2>Zaloguj się</h2>
-      <form>
+      <form action="/login" method="post">
         <div class="form-group">
-          <input type="email" name="email" placeholder="Email" />
+          <input type="email" name="username" placeholder="Email" />
         </div>
         <div class="form-group">
           <input type="password" name="password" placeholder="Hasło" />
@@ -26,7 +27,7 @@
         </div>
 
         <div class="form-group form-group--buttons">
-          <a href="#" class="btn btn--without-border">Załóż konto</a>      
+          <a href="/register" class="btn btn--without-border">Załóż konto</a>
           <button class="btn" type="submit">Zaloguj się</button> 
         </div>
       </form>

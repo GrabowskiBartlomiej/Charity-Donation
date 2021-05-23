@@ -222,4 +222,5 @@ document.addEventListener("DOMContentLoaded", function () {
     function newLi() {
         return document.createElement("li");
     }
+
 });

@@ -27,7 +27,6 @@ public class HomePageServices {
         } catch (Exception e) {
             totalBags = 0;
         }
-        System.out.println(totalBags);
         model.addAttribute("totalBags", totalBags);
     }
 

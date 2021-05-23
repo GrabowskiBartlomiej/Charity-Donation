@@ -13,23 +13,33 @@
     <link rel="stylesheet" href="<c:url value="../../resources/css/style.css"/>" />
   </head>
   <body>
-  <%@include file="../Fragments/header.jsp"%>
 
+  <header>
+  <%@include file="../Fragments/header.jsp"%>
+  </header>
     <section class="login-page">
       <h2>Załóż konto</h2>
       <form:form modelAttribute="user" method="post">
         <div class="form-group">
+          <form:input type="text" path="name" placeholder="Imię" />
+        </div>
+        <div class="form-group">
+          <form:input type="text" path="surname" placeholder="Nazwisko" />
+        </div>
+        <div class="form-group">
           <form:input type="email" path="email" placeholder="Email" />
         </div>
         <div class="form-group">
-          <form:input id="psw" type="password" path="password" placeholder="Hasło" />
+          <p>Przynajmniej po jednej dużej i małej literze. Hasło o długości 6-20 znaków.</p>
+          <form:input id="psw" type="password" path="password" placeholder="Hasło" pattern="^(?=.*[a-z])(?=.*[A-Z]).{6,20}$"/>
         </div>
         <div class="form-group">
           <input id="psw2" type="password" name="password2" placeholder="Powtórz hasło" />
+          <p id="failPswCheck" style="display: none; color: red">Hasła się nie zgadzają.</p>
         </div>
 
         <div class="form-group form-group--buttons">
-          <a href="login.jsp" class="btn btn--without-border">Zaloguj się</a>
+          <a href="/login" class="btn btn--without-border">Zaloguj się</a>
           <form:button class="btn" type="submit">Załóż konto</form:button>
         </div>
       </form:form>
@@ -37,6 +47,6 @@
 
     <%@include file="../Fragments/footer.jsp"%>
 
-    <script src="<c:url value="../../resources/js/app.js"/>"></script>
+    <script src="<c:url value="../../resources/js/register.js"/>"></script>
   </body>
 </html>
