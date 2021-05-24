@@ -4,8 +4,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import pl.coderslab.charity.Entity.User;
 import pl.coderslab.charity.Repository.UserRepo;
+import pl.coderslab.charity.Service.UserServices;
+
 @Service
 public class UserPrincipalDetailsService implements UserDetailsService {
 

@@ -17,7 +17,6 @@ public class User {
 
     private String surname;
 
-    @NotEmpty
     @Email
     @Column(unique = true)
     private String email;
