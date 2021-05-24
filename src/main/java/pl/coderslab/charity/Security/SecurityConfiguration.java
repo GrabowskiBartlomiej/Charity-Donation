@@ -8,17 +8,28 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private UserPrincipalDetailsService userPrincipalDetailsService;
 
-    public SecurityConfiguration(UserPrincipalDetailsService userPrincipalDetailsService) {
+
+    @Autowired
+    public SecurityConfiguration(UserPrincipalDetailsService userPrincipalDetailsService){
         this.userPrincipalDetailsService = userPrincipalDetailsService;
     }
 
@@ -38,6 +49,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
+                .failureUrl("/login")
+                .usernameParameter("email")
+                .successHandler(new AuthenticationSuccessHandler() {
+                    @Override
+                    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+                        List<GrantedAuthority> authorities = (List<GrantedAuthority>) authentication.getAuthorities();
+                        for(GrantedAuthority authority : authorities){
+                            if(authority.toString().equals("ROLE_ADMIN")){
+                                httpServletResponse.sendRedirect("/admin/dashboard");
+                            }else{
+                                httpServletResponse.sendRedirect("/user/dashboard");
+                            }
+                        }
+                    }
+                })
                 .and()
                 .csrf().disable();
     }
@@ -54,4 +80,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
+
 }
