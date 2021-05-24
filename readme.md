@@ -9,13 +9,20 @@ Functionalities:
 * Lists first 4 trusted institutes,
 * Donation available,
 * Can move forward and backwards while maintain inputs filled with data,
-* 
+* Registration available,
+* Login available,
+* Redirect on login based on role,
+* Admin dashboard,
+* User dashboard,
+* User profile modification available,
+* User changing password available,
 
 
 
 
 Tecnologies used:
 * Spring Boot
+* Spring Security
 * Spring Form
 * Hibernate
 * Spring Data JPA
