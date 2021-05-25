@@ -75,4 +75,33 @@ public class UserServices {
             return false;
         }
     }
+
+
+    public void addAdmin(User addAdmin) {
+        addAdmin.setRoles("ADMIN");
+        userRepo.save(addAdmin);
+    }
+
+    public void removeUser(Long id) {
+        userRepo.delete(userRepo.findUserById(id));
+    }
+
+    public User getUser(Long id){
+       return userRepo.findUserById(id);
+    }
+
+    public void changePsw(Long id, String password) {
+        User user = userRepo.findUserById(id);
+        user.setPassword(passwordEncoder.encode(password));
+        userRepo.save(user);
+    }
+
+    public void updateAdmin(User editAdmin) {
+        User user = userRepo.findUserById(editAdmin.getId());
+        user.setEmail(editAdmin.getEmail());
+        user.setName(editAdmin.getName());
+        user.setSurname(editAdmin.getSurname());
+        user.setRoles(editAdmin.getRoles());
+        userRepo.save(user);
+    }
 }

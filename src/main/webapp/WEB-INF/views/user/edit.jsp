@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="/user/changePassword" class="btn btn--without-border">Zmień hasło</a>
+            <a href="/user/changePassword/${editUser.id}" class="btn btn--without-border">Zmień hasło</a>
             <form:button class="btn" type="submit">Zmień Dane</form:button>
         </div>
     </form:form>
