@@ -25,14 +25,14 @@ public class AuthenticationController {
     @GetMapping("register")
     public String registrationForm(Model model) {
         User user = new User();
-        model.addAttribute("user", user);
+        model.addAttribute("userReg", user);
         return "register";
     }
 
     @PostMapping("register")
     public String validateRegForm(@Valid User user) {
         userServices.addUser(user);
-        return "login";
+        return "redirect:/login";
     }
 
     @GetMapping("login")

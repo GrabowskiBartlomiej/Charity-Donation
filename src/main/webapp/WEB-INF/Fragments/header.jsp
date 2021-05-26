@@ -19,7 +19,14 @@
                 </c:when>
                 <c:otherwise>
                     <ul class="nav--actions">
-                        <li><p>Witaj ${user.name}</p></li>
+                        <c:choose>
+                            <c:when test="${user.roles == 'ADMIN'}">
+                                <li><a href="/admin/dashboard" class="btn btn--small btn--without-border">Witaj ${user.name}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><p>Witaj ${user.name}</p></li>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                     <ul>
                         <li><a href="/app/add" class="btn btn--without-border active">Podaruj</a></li>

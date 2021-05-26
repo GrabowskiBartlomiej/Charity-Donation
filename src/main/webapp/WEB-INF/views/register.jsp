@@ -19,7 +19,7 @@
   </header>
     <section class="login-page">
       <h2>Załóż konto</h2>
-      <form:form modelAttribute="user" method="post">
+      <form:form modelAttribute="userReg" method="post">
         <div class="form-group">
           <form:input type="text" path="name" placeholder="Imię" />
         </div>

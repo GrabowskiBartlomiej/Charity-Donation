@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.Entity.Donation;
 import pl.coderslab.charity.Service.DonationServices;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -32,8 +33,8 @@ public class DonationController {
     }
 
     @PostMapping("add")
-    public String processForm(@Valid Donation donation){
-        donationServices.addDonation(donation);
+    public String processForm(@Valid Donation donation, HttpServletRequest req){
+        donationServices.addDonation(donation, req);
         return "app/form-confirmation";
     }
 }

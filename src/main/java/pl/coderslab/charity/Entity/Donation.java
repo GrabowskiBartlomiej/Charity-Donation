@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,11 +26,15 @@ public class Donation {
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private String pickUpComment;
+    private Date creationTime = new Date();
+    private int picked = 0;
+    @OneToOne
+    private User user;
 
     public Donation() {
     }
 
-    public Donation(long id, int quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment) {
+    public Donation(long id, int quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment, Date creationTime, int picked, User user) {
         this.id = id;
         this.quantity = quantity;
         this.categories = categories;
@@ -40,7 +45,11 @@ public class Donation {
         this.pickUpDate = pickUpDate;
         this.pickUpTime = pickUpTime;
         this.pickUpComment = pickUpComment;
+        this.creationTime = creationTime;
+        this.picked = picked;
+        this.user = user;
     }
+
 
     public long getId() {
         return id;
@@ -122,6 +131,30 @@ public class Donation {
         this.pickUpComment = pickUpComment;
     }
 
+    public Date getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public int getPicked() {
+        return picked;
+    }
+
+    public void setPicked(int picked) {
+        this.picked = picked;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Donation{" +
@@ -135,6 +168,10 @@ public class Donation {
                 ", pickUpDate=" + pickUpDate +
                 ", pickUpTime=" + pickUpTime +
                 ", pickUpComment='" + pickUpComment + '\'' +
+                ", creationTime=" + creationTime +
+                ", picked=" + picked +
+                ", user=" + user +
                 '}';
     }
+
 }

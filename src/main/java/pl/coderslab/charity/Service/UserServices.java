@@ -79,6 +79,7 @@ public class UserServices {
 
     public void addAdmin(User addAdmin) {
         addAdmin.setRoles("ADMIN");
+        addAdmin.setPassword(passwordEncoder.encode(addAdmin.getPassword()));
         userRepo.save(addAdmin);
     }
 

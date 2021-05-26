@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.Entity.User;
+import pl.coderslab.charity.Service.DonationServices;
 import pl.coderslab.charity.Service.UserServices;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +16,12 @@ import javax.validation.Valid;
 public class UserController {
 
     private UserServices userServices;
+    private DonationServices donationServices;
 
     @Autowired
-    public UserController(UserServices userServices) {
+    public UserController(UserServices userServices, DonationServices donationServices) {
         this.userServices = userServices;
+        this.donationServices = donationServices;
     }
 
     @GetMapping("dashboard")
@@ -56,7 +59,12 @@ public class UserController {
         } else {
             return "redirect:/user/changePassword";
         }
+    }
 
+    @GetMapping("myDonations")
+    public String myDonations(HttpServletRequest req){
+        donationServices.getMyDonations(req);
+        return "user/myDonations";
     }
 
 }
