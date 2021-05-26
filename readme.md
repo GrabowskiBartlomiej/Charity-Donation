@@ -17,7 +17,8 @@ Functionalities:
 * User profile modification available,
 * User changing password available,
 * CRUD for Institutions in admin panel,
-* CRUD for Administrator users in admin panel,
+* CRUD for users with Administrator role in admin panel,
+* CRUD for Users
 * 
 
 
