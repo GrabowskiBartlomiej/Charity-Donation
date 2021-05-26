@@ -119,4 +119,34 @@ public class AdminController {
         userServices.changePsw(id, password);
         return "redirect:/admin/allAdmins";
     }
+
+    @GetMapping("deleteUser/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userServices.removeUser(id);
+        return "redirect:/admin/allUsers";
+    }
+
+    @GetMapping("editUser/{id}")
+    public String editUser(Model model, @PathVariable Long id) {
+        model.addAttribute("editAdmin", userServices.getUser(id));
+        return "/admin/editAdmin";
+    }
+
+    @PostMapping("editUser/{id}")
+    public String editUserSuccess(@Valid @ModelAttribute User editAdmin) {
+        userServices.updateAdmin(editAdmin);
+        return "redirect:/admin/allUsers";
+    }
+
+    @GetMapping("addUser")
+    public String addUser(Model model) {
+        model.addAttribute("addAdmin", new User());
+        return "admin/addAdmin";
+    }
+
+    @PostMapping("addUser")
+    public String addUserSuccess(@Valid @ModelAttribute User addAdmin) {
+        userServices.addUser(addAdmin);
+        return "redirect:/admin/allUsers";
+    }
 }

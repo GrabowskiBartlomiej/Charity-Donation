@@ -31,8 +31,7 @@
 </header>
 <h2>Panel Administratorów</h2>
 
-<a href="/admin/addAdmin" class="btn btn--without-border btn--highlighted" style="margin: 3%;">Dodaj
-    Nowe Konto Administratorskie</a>
+<a href="/admin/addAdmin" class="btn btn--without-border btn--highlighted" style="margin: 3%;">Dodaj Nowe Konto Administratorskie</a>
 
 
 <table id="customTables" class="center">
