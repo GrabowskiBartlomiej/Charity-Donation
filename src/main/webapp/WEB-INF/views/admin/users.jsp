@@ -17,6 +17,7 @@
             <li><a href="/user/dashboard" class="btn btn--small btn--without-border">Witaj ${user.name}</a></li>
         </ul>
         <ul>
+            <li><a href="/admin/allDonations" class="btn btn--without-border">Dary</a></li>
             <li><a href="/admin/allAdmins" class="btn btn--without-border">Administracja</a></li>
             <li><a href="/admin/dashboard" class="btn btn--without-border">Dashboard</a></li>
             <li><a href="/admin/allInstitutions" class="btn btn--without-border">Fundacje</a></li>

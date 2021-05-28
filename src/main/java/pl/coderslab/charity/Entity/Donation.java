@@ -155,23 +155,4 @@ public class Donation {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "Donation{" +
-                "id=" + id +
-                ", quantity=" + quantity +
-                ", categories=" + categories +
-                ", institution=" + institution +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", pickUpDate=" + pickUpDate +
-                ", pickUpTime=" + pickUpTime +
-                ", pickUpComment='" + pickUpComment + '\'' +
-                ", creationTime=" + creationTime +
-                ", picked=" + picked +
-                ", user=" + user +
-                '}';
-    }
-
 }

@@ -17,12 +17,6 @@ public class Institution {
     public Institution() {
     }
 
-    public Institution(long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
-
     public long getId() {
         return id;
     }
@@ -47,12 +41,4 @@ public class Institution {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Institution{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }

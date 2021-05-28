@@ -19,6 +19,7 @@
         </ul>
 
         <ul>
+            <li><a href="/admin/allDonations" class="btn btn--without-border">Dary</a></li>
             <li><a href="/admin/dashboard" class="btn btn--without-border">Dashboard</a></li>
             <li><a href="/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
             <li><a href="/admin/allInstitutions" class="btn btn--without-border">Fundacje</a></li>
@@ -33,7 +34,7 @@
 
     <section class="login-page">
         <h2>Nowy administrator</h2>
-        <form:form modelAttribute="addAdmin" method="post">
+        <form:form modelAttribute="newUser" method="post">
             <div class="form-group">
                 <form:input type="text" path="name" placeholder="Imię" />
             </div>

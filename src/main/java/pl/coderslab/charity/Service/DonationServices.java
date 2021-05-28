@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import pl.coderslab.charity.Entity.Donation;
-import pl.coderslab.charity.Entity.Institution;
 import pl.coderslab.charity.Entity.User;
 import pl.coderslab.charity.Repository.CategoryRepo;
 import pl.coderslab.charity.Repository.DonationRepo;
@@ -29,7 +28,8 @@ public class DonationServices {
 
 
     public void getCategories(Model model) {
-        model.addAttribute("allCategories", categoryRepo.findAll());
+        if(!model.containsAttribute("allCategories"))
+            model.addAttribute("allCategories", categoryRepo.findAll());
     }
 
     public void getInstitutions(Model model) {
@@ -44,9 +44,38 @@ public class DonationServices {
 
     public void getMyDonations(HttpServletRequest req) {
         User user = (User) req.getSession().getAttribute("user");
-        System.out.println(user.getId());
-        System.out.println(donationRepo.myDonations(user.getId()));
-        System.out.println((donationRepo.myDonations(user.getId()).size()));
         req.getSession().setAttribute("myDonations", donationRepo.myDonations(user.getId()));
+    }
+
+    public List<Donation> getAllDonations() {
+        return donationRepo.findAll();
+    }
+
+    public void deleteDonation(Long id) {
+        donationRepo.delete(donationRepo.findDonationById(id));
+    }
+
+    public void changeDonationStatus(Long id) {
+        Donation donation = donationRepo.findDonationById(id);
+
+        if (donation.getPicked() == 0) {
+            donation.setPicked(1);
+        } else {
+            donation.setPicked(0);
+        }
+        donationRepo.save(donation);
+    }
+
+    public Donation getDonation(Long id) {
+        return donationRepo.findDonationById(id);
+    }
+
+    public void updateDonation(Donation editDonation) {
+        donationRepo.save(editDonation);
+    }
+
+    public void getAllInstitutions(Model model) {
+        if(!model.containsAttribute("allInstitutions"))
+            model.addAttribute("allInstitutions", institutionRepo.findAll());
     }
 }

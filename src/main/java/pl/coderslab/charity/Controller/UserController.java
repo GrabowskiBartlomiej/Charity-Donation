@@ -26,38 +26,34 @@ public class UserController {
 
     @GetMapping("dashboard")
     public String dashboard(HttpServletRequest req){
-        userServices.getUser(req);
+        userServices.getLoggedUser(req);
         return "user/dashboard";
     }
 
-    @GetMapping("userEdit")
-    public String userEdit(Model model, HttpServletRequest req){
-        User user = (User) req.getSession().getAttribute("user");
-        System.out.println(user);
-        model.addAttribute("editUser", user);
+    @GetMapping("userEdit/{id}")
+    public String userEdit(Model model, @PathVariable Long id){
+        model.addAttribute("editUser", userServices.getUser(id));
         return "user/edit";
     }
 
-    @PostMapping("userEdit")
-    public String userEditSuccess(@Valid @ModelAttribute User editUser, HttpServletRequest req){
-        userServices.updateUser(editUser, req);
+    @PostMapping("userEdit/{id}")
+    public String userEditSuccess(@Valid @ModelAttribute User editUser){
+        userServices.updateUser(editUser);
         return "redirect:/user/dashboard";
     }
 
-    @GetMapping("changePassword")
-    public String changePassword(Model model){
-        User user = new User();
-        model.addAttribute("editUser", user);
+    @GetMapping("changePassword/{id}")
+    public String changePassword(){
         return "user/changePassword";
     }
 
-    @PostMapping("changePassword")
-    public String changePasswordSuccess(@Valid @ModelAttribute User editUser, @RequestParam String currentPsw, HttpServletRequest req) {
-        if (userServices.checkPasswords(req, currentPsw)) {
-            userServices.changePassword(editUser, req);
-            return "redirect:/user/dashboard";
-        } else {
-            return "redirect:/user/changePassword";
+    @PostMapping("changePassword/{id}")
+    public String changePasswordSuccess(@RequestParam String password, @RequestParam String password2, @RequestParam String currentPsw, @PathVariable Long id) {
+        if(userServices.checkOldPasswordsCompatibility(id ,currentPsw) && userServices.checkNewPasswordsCompatibility(password,password2)){
+                userServices.changePassword(id, password);
+                return "redirect:/user/dashboard";
+        }else {
+            return "redirect:/user/changePassword/" + id;
         }
     }
 

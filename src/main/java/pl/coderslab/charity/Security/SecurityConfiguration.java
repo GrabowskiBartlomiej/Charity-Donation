@@ -14,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
-    public SecurityConfiguration(UserPrincipalDetailsService userPrincipalDetailsService){
+    public SecurityConfiguration(UserPrincipalDetailsService userPrincipalDetailsService) {
         this.userPrincipalDetailsService = userPrincipalDetailsService;
     }
 
@@ -56,10 +55,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
                         List<GrantedAuthority> authorities = (List<GrantedAuthority>) authentication.getAuthorities();
-                        for(GrantedAuthority authority : authorities){
-                            if(authority.toString().equals("ROLE_ADMIN")){
+                        for (GrantedAuthority authority : authorities) {
+                            if (authority.toString().equals("ROLE_ADMIN")) {
                                 httpServletResponse.sendRedirect("/admin/dashboard");
-                            }else{
+                            } else {
                                 httpServletResponse.sendRedirect("/user/dashboard");
                             }
                         }
@@ -86,7 +85,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
 
 }

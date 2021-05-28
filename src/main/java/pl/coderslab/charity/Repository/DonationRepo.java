@@ -15,4 +15,6 @@ public interface DonationRepo extends JpaRepository<Donation, Long> {
 
     @Query("SELECT d FROM Donation d WHERE d.user.id = :id")
     List<Donation> myDonations(Long id);
+
+    Donation findDonationById(Long id);
 }

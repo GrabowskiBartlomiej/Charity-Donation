@@ -30,7 +30,7 @@
                     </ul>
                     <ul>
                         <li><a href="/app/add" class="btn btn--without-border active">Podaruj</a></li>
-                        <li><a href="/user/userEdit" class="btn btn--without-border">Edytuj</a></li>
+                        <li><a href="/user/userEdit/${user.id}" class="btn btn--without-border">Edytuj</a></li>
                         <li><a href="/user/myDonations" class="btn btn--without-border">Moje Dary</a></li>
                         <li><form action="/logout" method="post"><button class="btn btn--without-border" type="submit">Wyloguj</button></form></li>
                     </ul>

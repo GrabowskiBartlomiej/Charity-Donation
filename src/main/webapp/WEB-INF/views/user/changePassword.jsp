@@ -5,25 +5,51 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Change Password</title>
+    <link rel="stylesheet" href="<c:url value="../../resources/css/style.css"/>"/>
 </head>
 <body>
-<form:form modelAttribute="editUser" method="post">
-    <div class="form-group">
-        <input type="password" name="currentPsw" placeholder="Aktualne Hasło" />
-    </div>
-    <div class="form-group">
-        <form:input id="psw" type="password" path="password" placeholder="Nowe Hasło" />
-    </div>
+<header>
+    <nav class="container container--70">
+        <ul class="nav--actions">
+            <li><a href="/user/dashboard" class="btn btn--small btn--without-border">Witaj ${user.name}</a></li>
+        </ul>
+        <ul>
+            <li><a href="/admin/allAdmins" class="btn btn--without-border">Administracja</a></li>
+            <li><a href="/admin/dashboard" class="btn btn--without-border">Dashboard</a></li>
+            <li><a href="/admin/allInstitutions" class="btn btn--without-border">Fundacje</a></li>
+            <li>
+                <form action="/logout" method="post">
+                    <button class="btn btn--without-border" type="submit">Wyloguj</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
 
-    <div class="form-group">
-        <input id="psw2" type="password" name="password2" placeholder="Powtórz Hasło" />
-    </div>
+<section class="login-page">
+<h2>Zmień hasło użytkownika</h2>
+    <form method="post">
+        <div class="form-group">
+            <input type="password" name="currentPsw" placeholder="Aktualne Hasło" />
+        </div>
+        <div class="form-group">
+            <input id="psw" type="password" name="password" placeholder="Nowe Hasło" />
+        </div>
 
-    <div class="form-group form-group--buttons">
-        <form:button class="btn" type="submit">Zmień hasło</form:button>
-    </div>
-</form:form>
+        <div class="form-group">
+            <input id="psw2" type="password" name="password2" placeholder="Powtórz Hasło" />
+        </div>
+
+        <div class="form-group form-group--buttons">
+            <button class="btn" type="submit">Zmień hasło</button>
+        </div>
+</form>
+</section>
+
 <script src="<c:url value="../../resources/js/register.js"/>"></script>
 </body>
 </html>

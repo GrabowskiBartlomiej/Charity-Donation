@@ -18,6 +18,7 @@
             </ul>
 
             <ul>
+                <li><a href="/admin/allDonations" class="btn btn--without-border">Dary</a></li>
                 <li><a href="/admin/allAdmins" class="btn btn--without-border">Administracja</a></li>
                 <li><a href="/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
                 <li><a href="/admin/allInstitutions" class="btn btn--without-border">Fundacje</a></li>

@@ -12,18 +12,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String name;
-
     private String surname;
-
     @Email
     @Column(unique = true)
     private String email;
-
     @Column(nullable = false)
     private String password;
-
     private String roles = "USER";
 
     public User() {
@@ -93,15 +88,4 @@ public class User {
         return  new ArrayList<>();
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", roles='" + roles + '\'' +
-                '}';
-    }
 }

@@ -19,6 +19,7 @@
         </ul>
 
         <ul>
+            <li><a href="/admin/allDonations" class="btn btn--without-border">Dary</a></li>
             <li><a href="/admin/dashboard" class="btn btn--without-border">Dashboard</a></li>
             <li><a href="/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
             <li><a href="/admin/allInstitutions" class="btn btn--without-border">Fundacje</a></li>
@@ -33,21 +34,24 @@
 
 <h2>Edytuj Administratora</h2>
 <section class="login-page">
-    <form:form modelAttribute="editAdmin" method="post">
-        <p style="font-size: 15px;">Email:</p>
+    <form:form modelAttribute="editUser" method="post">
         <div style="display: none">
-            <form:input path="id" placeholder="${editAdmin.id}" readonly="true"/>
+            <form:input path="id" placeholder="${editUser.id}" readonly="true"/>
         </div>
+        <div style="display: none">
+            <form:input type="text" path="password" placeholder="#{editUser.password}}" readonly="true"/>
+        </div>
+        <p style="font-size: 15px;">Email:</p>
         <div class="form-group">
-            <form:input type="text" path="email" placeholder="#{editAdmin.email}}"/>
+            <form:input type="text" path="email" placeholder="#{editUser.email}}"/>
         </div>
         <p style="font-size: 15px;">Imię:</p>
         <div class="form-group">
-            <form:input type="text" path="name" placeholder="${editAdmin.name}"/>
+            <form:input type="text" path="name" placeholder="${editUser.name}"/>
         </div>
         <p style="font-size: 15px;">Nazwisko:</p>
         <div class="form-group">
-            <form:input type="text" path="surname" placeholder="${editAdmin.surname}"/>
+            <form:input type="text" path="surname" placeholder="${editUser.surname}"/>
         </div>
         <p style="font-size: 15px;">Rola:</p>
         <div class="form-group">
@@ -55,7 +59,7 @@
             <form:radiobutton path="roles" value="USER"/>USER
         </div>
         <div class="form-group form-group--buttons">
-            <a href="/admin/changePassword" class="btn btn--without-border">Zmień hasło</a>
+            <a href="/admin/changePassword/${editUser.id}" class="btn btn--without-border">Zmień hasło</a>
             <form:button class="btn" type="submit">Zatwierdź Zmiany</form:button>
         </div>
     </form:form>

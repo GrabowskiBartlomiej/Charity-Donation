@@ -13,26 +13,17 @@
 </head>
 <body>
 <header>
-    <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="/user/dashboard" class="btn btn--small btn--without-border">Witaj ${user.name}</a></li>
-        </ul>
-
-        <ul>
-            <li><a href="/admin/dashboard" class="btn btn--without-border">Dashboard</a></li>
-            <li><a href="/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
-            <li><a href="/admin/allInstitutions" class="btn btn--without-border">Fundacje</a></li>
-            <li>
-                <form action="/logout" method="post">
-                    <button class="btn btn--without-border" type="submit">Wyloguj</button>
-                </form>
-            </li>
-        </ul>
-    </nav>
+    <%@include file="../../Fragments/header.jsp"%>
 </header>
 <h2>Edytuj swój profil</h2>
 <section class="login-page">
     <form:form modelAttribute="editUser" method="post">
+        <div style="display: none">
+            <form:input path="id" placeholder="${editUser.id}" readonly="true"/>
+        </div>
+        <div style="display: none">
+            <form:input type="text" path="password" placeholder="#{editUser.password}}" readonly="true"/>
+        </div>
         <div class="form-group">
             <form:input type="text" path="name" placeholder="${user.name}"/>
         </div>

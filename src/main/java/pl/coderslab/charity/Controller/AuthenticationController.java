@@ -31,7 +31,7 @@ public class AuthenticationController {
 
     @PostMapping("register")
     public String validateRegForm(@Valid User user) {
-        userServices.addUser(user);
+        userServices.addUser(user, 0);
         return "redirect:/login";
     }
 

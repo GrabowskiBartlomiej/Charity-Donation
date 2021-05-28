@@ -32,8 +32,8 @@
             <td>${donation.pickUpTime}</td>
             <td>${donation.picked}</td>
             <td>
-                <a href="/admin/deleteAdmin/${admin.id}">Usuń</a><br>
-                <a href="/admin/editAdmin/${admin.id}">Edytuj</a>
+                <a href="/admin/deleteAdmin/${donation.id}">Usuń</a><br>
+                <a href="/admin/editAdmin/${donation.id}">Edytuj</a>
             </td>
         </tr>
     </c:forEach>
