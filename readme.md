@@ -19,6 +19,7 @@ Functionalities:
 * CRUD for Institutions in admin panel,
 * CRUD for users with Administrator role in admin panel,
 * CRUD for Users
+* User can view his own donations,
 * 
 
 
