@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.Entity.Donation;
 import pl.coderslab.charity.Entity.User;
 import pl.coderslab.charity.Service.DonationServices;
-import pl.coderslab.charity.Service.InstitutionServices;
-import pl.coderslab.charity.Service.UserServices;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
