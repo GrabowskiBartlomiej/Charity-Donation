@@ -46,7 +46,7 @@ public class UsersAdminController {
     }
 
     @PostMapping("edit/{id}")
-    public String editUserSuccess(@Valid @ModelAttribute User editUser, HttpServletRequest req) {
+    public String editUserSuccess(@Valid @ModelAttribute User editUser) {
         if (userServices.checkEmail(editUser.getEmail())) {
             userServices.updateUser(editUser);
             return "redirect:/admin/users/all";

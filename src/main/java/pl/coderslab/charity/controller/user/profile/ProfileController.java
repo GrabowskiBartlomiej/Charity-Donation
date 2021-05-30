@@ -22,29 +22,29 @@ public class ProfileController {
     }
 
     @GetMapping("edit/{id}")
-    public String userEdit(Model model, @PathVariable Long id){
+    public String userEdit(Model model, @PathVariable Long id) {
         model.addAttribute("editUser", userServices.getUser(id));
         return "user/edit";
     }
 
     @PostMapping("edit/{id}")
-    public String userEditSuccess(@Valid @ModelAttribute User editUser){
+    public String userEditSuccess(@Valid @ModelAttribute User editUser) {
         userServices.updateUser(editUser);
         return "redirect:/user/dashboard";
     }
 
     @GetMapping("change-password/{id}")
-    public String changePassword(){
+    public String changePassword() {
         return "user/changePassword";
     }
 
     @PostMapping("change-password/{id}")
     public String changePasswordSuccess(@RequestParam String password, @RequestParam String password2, @RequestParam String currentPsw, @PathVariable Long id, HttpServletRequest req) {
-        if(userServices.checkOldPasswordsCompatibility(id ,currentPsw) && userServices.checkNewPasswordsCompatibility(password,password2)){
+        if (userServices.checkOldPasswordsCompatibility(id, currentPsw) && userServices.checkNewPasswordsCompatibility(password, password2)) {
             userServices.changePassword(id, password);
             req.getSession().removeAttribute("user");
             return "redirect:/login";
-        }else {
+        } else {
             return "redirect:/user/profile/change-password/" + id;
         }
     }

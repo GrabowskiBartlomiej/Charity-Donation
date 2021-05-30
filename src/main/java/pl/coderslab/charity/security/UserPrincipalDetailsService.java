@@ -10,7 +10,7 @@ import pl.coderslab.charity.repository.UserRepo;
 @Service
 public class UserPrincipalDetailsService implements UserDetailsService {
 
-    private UserRepo userRepo;
+    private final UserRepo userRepo;
 
     public UserPrincipalDetailsService(UserRepo userRepo) {
         this.userRepo = userRepo;
@@ -22,8 +22,7 @@ public class UserPrincipalDetailsService implements UserDetailsService {
         if (user == null) {
             return null;
         } else {
-            UserPrincipal userPrincipal = new UserPrincipal(user);
-            return userPrincipal;
+            return new UserPrincipal(user);
         }
     }
 

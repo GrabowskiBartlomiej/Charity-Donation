@@ -38,7 +38,7 @@ public class DonationsUserController {
     }
 
     @GetMapping("my-donations")
-    public String myDonations(HttpServletRequest req){
+    public String myDonations(HttpServletRequest req) {
         donationServices.getMyDonations(req);
         return "donation/myDonations";
     }
@@ -52,12 +52,12 @@ public class DonationsUserController {
     }
 
     @PostMapping("edit/{id}")
-    public String editDonationSuccess(@Valid @ModelAttribute Donation editDonation, HttpServletRequest req){
+    public String editDonationSuccess(@Valid @ModelAttribute Donation editDonation, HttpServletRequest req) {
         User user = (User) req.getSession().getAttribute("user");
         donationServices.updateDonation(editDonation);
-        if(user.getRoles().equals("ADMIN")){
+        if (user.getRoles().equals("ADMIN")) {
             return "redirect:/admin/donations/all";
-        }else {
+        } else {
             return "redirect:/user/donations/my-donations";
         }
     }

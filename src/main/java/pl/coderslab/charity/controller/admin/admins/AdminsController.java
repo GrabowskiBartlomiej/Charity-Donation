@@ -50,13 +50,13 @@ public class AdminsController {
         if (userServices.checkEmail(editUser.getEmail())) {
             userServices.updateUser(editUser);
             User user = (User) req.getSession().getAttribute("user");
-            if(user.getId() == editUser.getId()){
+            if (user.getId() == editUser.getId()) {
                 req.getSession().removeAttribute("user");
                 return "redirect:/login";
-            }else {
-                if(editUser.getRoles().equals("USER")){
+            } else {
+                if (editUser.getRoles().equals("USER")) {
                     return "redirect:/admin/users/all";
-                }else {
+                } else {
                     return "redirect:/admin/admins/all";
                 }
             }

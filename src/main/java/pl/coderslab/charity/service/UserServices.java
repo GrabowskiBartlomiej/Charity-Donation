@@ -7,8 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import pl.coderslab.charity.entity.User;
-import pl.coderslab.charity.repository.InstitutionRepo;
 import pl.coderslab.charity.repository.UserRepo;
+
 import javax.servlet.http.HttpServletRequest;
 
 @Service
@@ -16,24 +16,22 @@ public class UserServices {
 
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
-    private final InstitutionRepo institutionRepo;
 
     @Autowired
-    public UserServices(UserRepo userRepo, PasswordEncoder passwordEncoder, InstitutionRepo institutionRepo) {
+    public UserServices(UserRepo userRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
-        this.institutionRepo = institutionRepo;
     }
 
     public void addUser(User user, int role) {
         user.setPassword(cryptPassword(user.getPassword()));
-        if(role == 1){
+        if (role == 1) {
             user.setRoles("ADMIN");
         }
         userRepo.save(user);
     }
 
-    public void updateUser(User user){
+    public void updateUser(User user) {
         userRepo.save(user);
     }
 
@@ -58,8 +56,8 @@ public class UserServices {
         model.addAttribute("admins", userRepo.findAllByRoles("ADMIN"));
     }
 
-    
-    public String cryptPassword(String password){
+
+    public String cryptPassword(String password) {
         return passwordEncoder.encode(password);
     }
 
@@ -67,7 +65,7 @@ public class UserServices {
         return password.equals(password2);
     }
 
-    public boolean checkOldPasswordsCompatibility(Long id, String currentPassword){
+    public boolean checkOldPasswordsCompatibility(Long id, String currentPassword) {
         return passwordEncoder.matches(currentPassword, userRepo.findUserById(id).getPassword());
     }
 
@@ -77,7 +75,7 @@ public class UserServices {
         userRepo.save(user);
     }
 
-    public boolean checkEmail(String email){
+    public boolean checkEmail(String email) {
         String emailReg = "^\\S+@\\S+\\.\\S+$";
         return email.matches(emailReg);
     }

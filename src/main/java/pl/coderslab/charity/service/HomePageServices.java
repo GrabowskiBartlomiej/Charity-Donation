@@ -9,8 +9,8 @@ import pl.coderslab.charity.repository.InstitutionRepo;
 @Service
 public class HomePageServices {
 
-    private InstitutionRepo institutionRepo;
-    private DonationRepo donationRepo;
+    private final InstitutionRepo institutionRepo;
+    private final DonationRepo donationRepo;
 
     @Autowired
     public HomePageServices(InstitutionRepo institutionRepo, DonationRepo donationRepo) {

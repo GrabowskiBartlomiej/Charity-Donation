@@ -15,9 +15,9 @@ import java.util.List;
 @Service
 public class DonationServices {
 
-    private DonationRepo donationRepo;
-    private CategoryRepo categoryRepo;
-    private InstitutionRepo institutionRepo;
+    private final DonationRepo donationRepo;
+    private final CategoryRepo categoryRepo;
+    private final InstitutionRepo institutionRepo;
 
     @Autowired
     public DonationServices(DonationRepo donationRepo, CategoryRepo categoryRepo, InstitutionRepo institutionRepo) {
@@ -28,7 +28,7 @@ public class DonationServices {
 
 
     public void getCategories(Model model) {
-        if(!model.containsAttribute("allCategories"))
+        if (!model.containsAttribute("allCategories"))
             model.addAttribute("allCategories", categoryRepo.findAll());
     }
 
@@ -75,7 +75,7 @@ public class DonationServices {
     }
 
     public void getAllInstitutions(Model model) {
-        if(!model.containsAttribute("allInstitutions"))
+        if (!model.containsAttribute("allInstitutions"))
             model.addAttribute("allInstitutions", institutionRepo.findAll());
     }
 }

@@ -17,8 +17,8 @@ import javax.validation.Valid;
 @RequestMapping("/")
 public class HomeController {
 
-    private HomePageServices homePageServices;
-    private UserServices userServices;
+    private final HomePageServices homePageServices;
+    private final UserServices userServices;
 
     @Autowired
     public HomeController(HomePageServices homePageServices, UserServices userServices) {

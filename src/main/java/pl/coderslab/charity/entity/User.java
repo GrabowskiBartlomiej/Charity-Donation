@@ -80,11 +80,11 @@ public class User {
         this.roles = roles;
     }
 
-    public List<String> getRoleList(){
-        if(this.roles.length() > 0){
+    public List<String> getRoleList() {
+        if (this.roles.length() > 0) {
             return Arrays.asList(this.roles.split(","));
         }
-        return  new ArrayList<>();
+        return new ArrayList<>();
     }
 
 }

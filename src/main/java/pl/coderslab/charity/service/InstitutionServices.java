@@ -9,7 +9,7 @@ import pl.coderslab.charity.repository.InstitutionRepo;
 @Service
 public class InstitutionServices {
 
-    private InstitutionRepo institutionRepo;
+    private final InstitutionRepo institutionRepo;
 
     @Autowired
     public InstitutionServices(InstitutionRepo institutionRepo) {
