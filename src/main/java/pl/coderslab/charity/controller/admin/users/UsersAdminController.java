@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.service.UserServices;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -45,7 +46,7 @@ public class UsersAdminController {
     }
 
     @PostMapping("edit/{id}")
-    public String editUserSuccess(@Valid @ModelAttribute User editUser) {
+    public String editUserSuccess(@Valid @ModelAttribute User editUser, HttpServletRequest req) {
         if (userServices.checkEmail(editUser.getEmail())) {
             userServices.updateUser(editUser);
             return "redirect:/admin/users/all";

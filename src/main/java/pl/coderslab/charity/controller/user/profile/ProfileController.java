@@ -39,10 +39,11 @@ public class ProfileController {
     }
 
     @PostMapping("change-password/{id}")
-    public String changePasswordSuccess(@RequestParam String password, @RequestParam String password2, @RequestParam String currentPsw, @PathVariable Long id) {
+    public String changePasswordSuccess(@RequestParam String password, @RequestParam String password2, @RequestParam String currentPsw, @PathVariable Long id, HttpServletRequest req) {
         if(userServices.checkOldPasswordsCompatibility(id ,currentPsw) && userServices.checkNewPasswordsCompatibility(password,password2)){
             userServices.changePassword(id, password);
-            return "redirect:/user/dashboard";
+            req.getSession().removeAttribute("user");
+            return "redirect:/login";
         }else {
             return "redirect:/user/profile/change-password/" + id;
         }

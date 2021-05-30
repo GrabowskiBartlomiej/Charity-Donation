@@ -49,8 +49,17 @@ public class AdminsController {
     public String editAdminSuccess(@Valid @ModelAttribute User editUser, HttpServletRequest req) {
         if (userServices.checkEmail(editUser.getEmail())) {
             userServices.updateUser(editUser);
-            userServices.getLoggedUser(req);
-            return "redirect:/admin/admins/all";
+            User user = (User) req.getSession().getAttribute("user");
+            if(user.getId() == editUser.getId()){
+                req.getSession().removeAttribute("user");
+                return "redirect:/login";
+            }else {
+                if(editUser.getRoles().equals("USER")){
+                    return "redirect:/admin/users/all";
+                }else {
+                    return "redirect:/admin/admins/all";
+                }
+            }
         } else {
             return "redirect:/admin/admins/edit/" + editUser.getId();
         }
