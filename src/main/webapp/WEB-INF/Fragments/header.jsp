@@ -10,7 +10,7 @@
                     </ul>
 
                     <ul>
-                        <li><a href="/app/add" class="btn btn--without-border active">Start</a></li>
+                        <li><a href="/user/donations/add" class="btn btn--without-border active">Start</a></li>
                         <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
                         <li><a href="#" class="btn btn--without-border">O nas</a></li>
                         <li><a href="#" class="btn btn--without-border">Fundacje i organizacje</a></li>
@@ -29,14 +29,13 @@
                         </c:choose>
                     </ul>
                     <ul>
-                        <li><a href="/app/add" class="btn btn--without-border active">Podaruj</a></li>
-                        <li><a href="/user/userEdit/${user.id}" class="btn btn--without-border">Edytuj</a></li>
-                        <li><a href="/user/myDonations" class="btn btn--without-border">Moje Dary</a></li>
+                        <li><a href="/user/donations/add" class="btn btn--without-border active">Podaruj</a></li>
+                        <li><a href="/user/profile/edit/${user.id}" class="btn btn--without-border">Edytuj</a></li>
+                        <li><a href="/user/donations/my-donations" class="btn btn--without-border">Moje Dary</a></li>
                         <li><form action="/logout" method="post"><button class="btn btn--without-border" type="submit">Wyloguj</button></form></li>
                     </ul>
 
                 </c:otherwise>
             </c:choose>
-
     </nav>
 

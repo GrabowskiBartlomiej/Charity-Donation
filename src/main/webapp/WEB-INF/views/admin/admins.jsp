@@ -12,27 +12,11 @@
 </head>
 <body>
 <header>
-    <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="/user/dashboard" class="btn btn--small btn--without-border">Witaj ${user.name}</a></li>
-        </ul>
-
-        <ul>
-            <li><a href="/admin/allDonations" class="btn btn--without-border">Dary</a></li>
-            <li><a href="/admin/dashboard" class="btn btn--without-border">Dashboard</a></li>
-            <li><a href="/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
-            <li><a href="/admin/allInstitutions" class="btn btn--without-border">Fundacje</a></li>
-            <li>
-                <form action="/logout" method="post">
-                    <button class="btn btn--without-border" type="submit">Wyloguj</button>
-                </form>
-            </li>
-        </ul>
-    </nav>
+    <%@include file="../../Fragments/adminHeader.jsp"%>
 </header>
 <h2>Panel Administratorów</h2>
 
-<a href="/admin/addAdmin" class="btn btn--without-border btn--highlighted" style="margin: 3%;">Dodaj Nowe Konto Administratorskie</a>
+<a href="/admin/admins/add" class="btn btn--without-border btn--highlighted" style="margin: 3%;">Dodaj Nowe Konto Administratorskie</a>
 
 
 <table id="customTables" class="center">
@@ -50,8 +34,8 @@
             <td>${admin.surname}</td>
             <td>${admin.roles}</td>
             <td>
-                <a href="/admin/deleteAdmin/${admin.id}">Usuń</a><br>
-                <a href="/admin/editAdmin/${admin.id}">Edytuj</a>
+                <a href="/admin/admins/delete/${admin.id}">Usuń</a><br>
+                <a href="/admin/admins/edit/${admin.id}">Edytuj</a>
             </td>
         </tr>
     </c:forEach>

@@ -12,28 +12,12 @@
 </head>
 <body>
 <header>
-    <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="/user/dashboard" class="btn btn--small btn--without-border">Witaj ${user.name}</a></li>
-        </ul>
-
-        <ul>
-            <li><a href="/admin/allDonations" class="btn btn--without-border">Dary</a></li>
-            <li><a href="/admin/allAdmins" class="btn btn--without-border">Administracja</a></li>
-            <li><a href="/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
-            <li><a href="/admin/dashboard" class="btn btn--without-border">Dashboard</a></li>
-            <li>
-                <form action="/logout" method="post">
-                    <button class="btn btn--without-border" type="submit">Wyloguj</button>
-                </form>
-            </li>
-        </ul>
-    </nav>
+    <%@include file="../../Fragments/adminHeader.jsp"%>
 </header>
 <h2>Panel Fundacji</h2>
 
 
-<a href="/admin/addInstitution" class="btn btn--without-border btn--highlighted" style="margin: 3%;">Dodaj
+<a href="/admin/institutions/add" class="btn btn--without-border btn--highlighted" style="margin: 3%;">Dodaj
     Fundację</a>
 
 
@@ -48,8 +32,8 @@
             <td>${fundation.name}</td>
             <td>${fundation.description}</td>
             <td>
-                <a href="/admin/deleteInstitution/${fundation.id}">Usuń</a><br>
-                <a href="/admin/editInstitution/${fundation.id}">Edytuj</a>
+                <a href="/admin/institutions/delete/${fundation.id}">Usuń</a><br>
+                <a href="/admin/institutions/edit/${fundation.id}">Edytuj</a>
             </td>
         </tr>
     </c:forEach>

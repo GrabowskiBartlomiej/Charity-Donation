@@ -9,27 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Edytuj Fundację</title>
+    <base href="/">
     <link rel="stylesheet" href="<c:url value="../../resources/css/style.css"/>"/>
 </head>
 <body>
 <header>
-    <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="/user/dashboard" class="btn btn--small btn--without-border">Witaj ${user.name}</a></li>
-        </ul>
-
-        <ul>
-            <li><a href="/admin/allDonations" class="btn btn--without-border">Dary</a></li>
-            <li><a href="/admin/allAdmins" class="btn btn--without-border">Administracja</a></li>
-            <li><a href="/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
-            <li><a href="/admin/dashboard" class="btn btn--without-border">Dashboard</a></li>
-            <li>
-                <form action="/logout" method="post">
-                    <button class="btn btn--without-border" type="submit">Wyloguj</button>
-                </form>
-            </li>
-        </ul>
-    </nav>
+    <%@include file="../../Fragments/adminHeader.jsp"%>
 </header>
 
 <h2>Edytuj Fundację</h2>

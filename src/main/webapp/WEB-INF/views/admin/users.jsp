@@ -12,25 +12,10 @@
 </head>
 <body>
 <header>
-    <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="/user/dashboard" class="btn btn--small btn--without-border">Witaj ${user.name}</a></li>
-        </ul>
-        <ul>
-            <li><a href="/admin/allDonations" class="btn btn--without-border">Dary</a></li>
-            <li><a href="/admin/allAdmins" class="btn btn--without-border">Administracja</a></li>
-            <li><a href="/admin/dashboard" class="btn btn--without-border">Dashboard</a></li>
-            <li><a href="/admin/allInstitutions" class="btn btn--without-border">Fundacje</a></li>
-            <li>
-                <form action="/logout" method="post">
-                    <button class="btn btn--without-border" type="submit">Wyloguj</button>
-                </form>
-            </li>
-        </ul>
-    </nav>
+    <%@include file="../../Fragments/adminHeader.jsp"%>
 </header>
 <h2>Panel Użytkowników</h2>
-<a href="/admin/addUser" class="btn btn--without-border btn--highlighted" style="margin: 3%;">Dodaj Nowego Użytkownika</a>
+<a href="/admin/users/add" class="btn btn--without-border btn--highlighted" style="margin: 3%;">Dodaj Nowego Użytkownika</a>
 
 <table id="customTables" class="center">
     <tr>
@@ -47,8 +32,8 @@
             <td>${user.surname}</td>
             <td>${user.roles}</td>
             <td>
-                <a href="/admin/deleteUser/${user.id}">Usuń</a><br>
-                <a href="/admin/editUser/${user.id}">Edytuj</a>
+                <a href="/admin/users/delete/${user.id}">Usuń</a><br>
+                <a href="/admin/users/edit/${user.id}">Edytuj</a>
             </td>
         </tr>
     </c:forEach>

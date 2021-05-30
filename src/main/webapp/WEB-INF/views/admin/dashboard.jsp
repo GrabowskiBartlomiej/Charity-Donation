@@ -12,19 +12,7 @@
 </head>
 <body>
     <header>
-        <nav class="container container--70">
-            <ul class="nav--actions">
-                <li><a href="/user/dashboard" class="btn btn--small btn--without-border">Witaj ${user.name}</a></li>
-            </ul>
-
-            <ul>
-                <li><a href="/admin/allDonations" class="btn btn--without-border">Dary</a></li>
-                <li><a href="/admin/allAdmins" class="btn btn--without-border">Administracja</a></li>
-                <li><a href="/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
-                <li><a href="/admin/allInstitutions" class="btn btn--without-border">Fundacje</a></li>
-                <li><form action="/logout" method="post"><button class="btn btn--without-border" type="submit">Wyloguj</button></form></li>
-            </ul>
-        </nav>
+        <%@include file="../../Fragments/adminHeader.jsp"%>
     </header>
     <h2>Admin Dashboard</h2>
     <footer>

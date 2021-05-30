@@ -1855,3 +1855,7 @@ footer .bottom-line--icons a img {
   background-color: #4CAF50;
   color: white;
 }
+
+#customTables a:hover{
+  color: goldenrod;
+}
