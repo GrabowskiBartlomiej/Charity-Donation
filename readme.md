@@ -20,13 +20,17 @@ Functionalities:
 * CRUD for users with Administrator role in admin panel,
 * CRUD for Users
 * User can view his own donations,
+* Admin can sign as picked the donation,
+* User can view donation details,
+* An email being sent to the user after registration.
 * 
 
 
 
 Tecnologies used:
 * Spring Boot
-* Spring Form
+* Spring Forms
+* Java Mail Sender
 * Hibernate
 * Spring Data JPA
 * HTML
