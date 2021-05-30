@@ -28,13 +28,14 @@ public class Donation {
     private String pickUpComment;
     private Date creationTime = new Date();
     private int picked = 0;
+    private Date pickedInDate;
     @OneToOne
     private User user;
 
     public Donation() {
     }
 
-    public Donation(long id, int quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment, Date creationTime, int picked, User user) {
+    public Donation(long id, int quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment, Date creationTime, int picked, Date pickedInDate, User user) {
         this.id = id;
         this.quantity = quantity;
         this.categories = categories;
@@ -47,9 +48,9 @@ public class Donation {
         this.pickUpComment = pickUpComment;
         this.creationTime = creationTime;
         this.picked = picked;
+        this.pickedInDate = pickedInDate;
         this.user = user;
     }
-
 
     public long getId() {
         return id;
@@ -155,4 +156,11 @@ public class Donation {
         this.user = user;
     }
 
+    public Date getPickedInDate() {
+        return pickedInDate;
+    }
+
+    public void setPickedInDate(Date pickedInDate) {
+        this.pickedInDate = pickedInDate;
+    }
 }

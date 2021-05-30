@@ -17,4 +17,7 @@ public interface DonationRepo extends JpaRepository<Donation, Long> {
     List<Donation> myDonations(Long id);
 
     Donation findDonationById(Long id);
+
+    @Query("SELECT d FROM Donation d ORDER BY d.picked DESC, d.pickedInDate desc , d.creationTime desc")
+    List<Donation> findAllDonationsByStatusAndDate();
 }

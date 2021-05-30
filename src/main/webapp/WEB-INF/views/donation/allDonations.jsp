@@ -32,7 +32,7 @@
             <td><c:forEach items="${donation.categories}" var="category">${category.name}; </c:forEach></td>
             <td>${donation.quantity}</td>
             <td>${donation.creationTime}</td>
-            <td>${donation.pickUpTime}</td>
+            <td><c:choose><c:when test="${donation.picked == 1}">${donation.pickedInDate}</c:when><c:otherwise>Jeszcze nie</c:otherwise></c:choose></td>
             <td>
                 <c:choose>
                     <c:when test="${donation.picked==0}">Nieodebrana</c:when>

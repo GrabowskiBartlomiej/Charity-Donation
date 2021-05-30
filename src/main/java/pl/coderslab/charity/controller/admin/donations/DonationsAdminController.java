@@ -23,7 +23,8 @@ public class DonationsAdminController {
 
     @GetMapping("all")
     public String allDonations(Model model) {
-        model.addAttribute("allDonations", donationServices.getAllDonations());
+        model.addAttribute("allDonations", donationServices.getAllDonationsSortedByStatusAndDate());
+
         return "donation/allDonations";
     }
 

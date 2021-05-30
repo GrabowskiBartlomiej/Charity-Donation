@@ -62,4 +62,10 @@ public class DonationsUserController {
         }
     }
 
+    @GetMapping("details/{id}")
+    public String showDonationDetails(Model model, @PathVariable Long id){
+        model.addAttribute("donationDetails", donationServices.getDonation(id));
+        return "donation/details";
+    }
+
 }

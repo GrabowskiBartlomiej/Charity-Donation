@@ -10,6 +10,7 @@ import pl.coderslab.charity.repository.DonationRepo;
 import pl.coderslab.charity.repository.InstitutionRepo;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -60,6 +61,7 @@ public class DonationServices {
 
         if (donation.getPicked() == 0) {
             donation.setPicked(1);
+            donation.setPickedInDate(new Date());
         } else {
             donation.setPicked(0);
         }
@@ -77,5 +79,9 @@ public class DonationServices {
     public void getAllInstitutions(Model model) {
         if (!model.containsAttribute("allInstitutions"))
             model.addAttribute("allInstitutions", institutionRepo.findAll());
+    }
+
+    public List<Donation> getAllDonationsSortedByStatusAndDate() {
+        return donationRepo.findAllDonationsByStatusAndDate();
     }
 }
