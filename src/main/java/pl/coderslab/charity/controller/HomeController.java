@@ -42,6 +42,7 @@ public class HomeController {
     @PostMapping("register")
     public String validateRegForm(@Valid User user) {
         userServices.addUser(user, 0);
+        userServices.sendEmailConfirmation(user);
         return "redirect:/login";
     }
 

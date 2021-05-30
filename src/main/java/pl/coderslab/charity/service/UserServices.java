@@ -16,11 +16,13 @@ public class UserServices {
 
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
+    private final EmailServices emailServices;
 
     @Autowired
-    public UserServices(UserRepo userRepo, PasswordEncoder passwordEncoder) {
+    public UserServices(UserRepo userRepo, PasswordEncoder passwordEncoder, EmailServices emailServices) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
+        this.emailServices = emailServices;
     }
 
     public void addUser(User user, int role) {
@@ -80,4 +82,7 @@ public class UserServices {
         return email.matches(emailReg);
     }
 
+    public void sendEmailConfirmation(User user) {
+        emailServices.sendNormalMessage(user.getEmail(),"Rejestracja na Charity", "Dziękujemy za zarejestrowanie się na naszym portalu, by potwierdzić rejestracje i móc się zalogować kliknij w link uwierzytelniający poniżej: ");
+    }
 }
