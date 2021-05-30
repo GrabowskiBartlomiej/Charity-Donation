@@ -85,4 +85,5 @@ public class UserServices {
     public void sendEmailConfirmation(User user) {
         emailServices.sendNormalMessage(user.getEmail(),"Rejestracja na Charity", "Dziękujemy za zarejestrowanie się na naszym portalu, by potwierdzić rejestracje i móc się zalogować kliknij w link uwierzytelniający poniżej: ");
     }
+
 }
